@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 2 * * 1'   # 每周一凌晨2点自动同步
+  workflow_dispatch:        # 允许手动触发
 
 jobs:
   deploy:
@@ -19,6 +22,13 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: 同步 Notion 文章
+        run: node scripts/sync-notion.js
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
+
       - run: npm run docs:build
 
       - uses: peaceiris/actions-gh-pages@v3

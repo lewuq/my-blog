@@ -15,5 +15,10 @@
   "type": "commonjs",
   "devDependencies": {
     "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.3",
+    "axios": "^1.17.0",
+    "notion-to-md": "^3.1.9"
   }
 }
