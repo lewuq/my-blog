@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vitepress *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5199/my-blog/posts/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5199/my-blog/posts/mcu/esp32/esp32-chess)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5199/my-blog/posts/mcu/esp32/esp32-stepper)",
+      "Bash(sleep 5 && cat /c/Users/le/AppData/Local/Temp/claude/c--Users-le-Desktop-my-blog/c7b78e64-2572-4694-a426-b52b7cba70cf/tasks/bwnb87cpp.output)",
+      "Read(//c/Users/le/AppData/Local/Temp/claude/c--Users-le-Desktop-my-blog/c7b78e64-2572-4694-a426-b52b7cba70cf/tasks/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5200/my-blog/posts/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5200/my-blog/posts/mcu/esp32/esp32-chess)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5200/my-blog/posts/mcu/esp32/esp32-stepper)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5200/my-blog/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5200/posts/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -L http://localhost:5200/)",
+      "Bash(pkill -f \"vitepress\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5201/my-blog/posts)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5201/my-blog/posts/mcu/esp32/esp32-chess)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5201/my-blog/posts/mcu/esp32/esp32-stepper)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5201/my-blog/posts/essay/matter/esp32c5-matter)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -L http://localhost:5201/my-blog/posts/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5202/my-blog/posts)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5202/my-blog/posts/mcu/esp32/esp32-chess)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5202/my-blog/posts/essay/matter/esp32c5-matter)",
+      "Bash(node scripts/sync-notion.js)"
+    ]
+  }
+}

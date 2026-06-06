@@ -18,7 +18,7 @@ subSubCategory: ""
 # 引脚分配图
 
 
-![%E3%80%90%E7%AB%8B%E5%88%9BESP32S3R8N8%E5%BC%80%E5%8F%91%E6%9D%BF%E3%80%91%E5%BC%95%E8%84%9A%E5%88%86%E9%85%8D%E5%9B%BE.png](./images/1780766157098-5fo426vi6io.png)
+![%E3%80%90%E7%AB%8B%E5%88%9BESP32S3R8N8%E5%BC%80%E5%8F%91%E6%9D%BF%E3%80%91%E5%BC%95%E8%84%9A%E5%88%86%E9%85%8D%E5%9B%BE.png](./images/1780770071718-m32b2nrejhn.png)
 
 
 ## 串口引脚
@@ -58,7 +58,7 @@ Serial1.begin(115200, SERIAL_8N1, RXPIN, TXPIN);
 否则容易报错
 
 
-![image.png](./images/1780766161261-yw5udgb9n3t.png)
+![image.png](./images/1780770072610-g6bib8q1jrv.png)
 
 
 移植陶晶驰串口屏
@@ -67,7 +67,7 @@ Serial1.begin(115200, SERIAL_8N1, RXPIN, TXPIN);
 参考链接：[http://wiki.tjc1688.com/debug/arduino/esp32s3.html#id3](http://wiki.tjc1688.com/debug/arduino/esp32s3.html#id3)
 
 
-![ESP32-S3_DevKitC-1_pinlayout.jpg](./images/1780766161841-l32m0lu3n0q.jpg)
+![ESP32-S3_DevKitC-1_pinlayout.jpg](./images/1780770072983-rzafte02v5l.jpg)
 
 
 ## 任务划分
@@ -76,10 +76,10 @@ Serial1.begin(115200, SERIAL_8N1, RXPIN, TXPIN);
 将需求划分成4个任务，通过串口2获取上位机坐标数据包进行解析，利用串口屏发送对应格式数据帧执行对应任务，驱动步进电机将棋子移入棋盘中
 
 
-![image.png](./images/1780766162956-3zwifp7xcg3.png)
+![image.png](./images/1780770073386-9ri1l53cfn.png)
 
 
-![image.png](./images/1780766163521-umxf8svfip.png)
+![image.png](./images/1780770073747-mqm9fa1eibl.png)
 
 
 忘记还有控制棋子颜色了，所以这个得作废

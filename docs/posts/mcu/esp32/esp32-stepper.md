@@ -15,7 +15,7 @@ ESP32-SOLO-1 引脚分布图（下面是链接）
 [https://wiki.diustou.com/cn/ESP32-SOLO-1](https://wiki.diustou.com/cn/ESP32-SOLO-1)
 
 
-![image.png](./images/1780766167347-3ltcq5vl86w.png)
+![image.png](./images/1780770075395-bfu9c9pi9yr.png)
 
 
 ESP32-SOLO-1 引脚分配表：

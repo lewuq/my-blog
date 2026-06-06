@@ -1,0 +1,14 @@
+{
+  "esp32c5-matter": {
+    "path": "essay/matter/esp32c5-matter.md",
+    "notion_updated": "2026-06-06T17:47:00.000Z"
+  },
+  "esp32-chess": {
+    "path": "mcu/esp32/esp32-chess.md",
+    "notion_updated": "2026-06-06T16:55:00.000Z"
+  },
+  "esp32-stepper": {
+    "path": "mcu/esp32/esp32-stepper.md",
+    "notion_updated": "2026-06-06T16:55:00.000Z"
+  }
+}

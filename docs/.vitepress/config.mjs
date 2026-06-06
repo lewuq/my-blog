@@ -1,4 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import { generateSidebar } from './posts.mjs'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const postsDir = join(__dirname, '..', 'posts')
 
 export default defineConfig({
   base: '/my-blog/',
@@ -8,24 +14,11 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '文章', link: '/posts/' },
+      { text: '文章', link: '/posts' },
     ],
 
     sidebar: {
-      '/posts/': [
-        {
-          text: 'MCU',
-          items: [
-            {
-              text: 'ESP32',
-              items: [
-                { text: 'ESP32-S3 三子棋', link: '/posts/mcu/esp32/esp32-chess' },
-                { text: 'ESP32 步进电机', link: '/posts/mcu/esp32/esp32-stepper' },
-              ]
-            }
-          ]
-        }
-      ]
+      '/posts': generateSidebar(postsDir),
     },
 
     socialLinks: [
