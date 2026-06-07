@@ -245,8 +245,6 @@ subCategory: "${subCategory}"
 subSubCategory: "${subSubCategory}"
 ---
 
-# ${title}
-
 `;
     fs.writeFileSync(filePath, frontmatter + mdContent, "utf-8");
     updated++;
