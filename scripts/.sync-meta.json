@@ -1,7 +1,7 @@
 {
   "esp32c5-matter": {
     "path": "essay/matter/esp32c5-matter.md",
-    "notion_updated": "2026-06-06T17:47:00.000Z"
+    "notion_updated": "2026-06-07T08:23:00.000Z"
   },
   "esp32-chess": {
     "path": "mcu/esp32/esp32-chess.md",
@@ -10,5 +10,73 @@
   "esp32-stepper": {
     "path": "mcu/esp32/esp32-stepper.md",
     "notion_updated": "2026-06-06T16:55:00.000Z"
+  },
+  "ha-network": {
+    "path": "essay/homeassistant/ha-network.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "net-ssh": {
+    "path": "essay/network/net-ssh.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "net-ubuntu": {
+    "path": "essay/network/net-ubuntu.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "nordic-ota": {
+    "path": "mcu/nordic/nordic-ota.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "ha-raspberry": {
+    "path": "essay/homeassistant/ha-raspberry.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "epit": {
+    "path": "linux/linux-bare-metal/imx6ull/epit.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "ha-matter": {
+    "path": "essay/matter/ha-matter.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "gpio-interrupt": {
+    "path": "linux/linux-bare-metal/imx6ull/gpio-interrupt.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "clock": {
+    "path": "linux/linux-bare-metal/imx6ull/clock.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "gpio-input": {
+    "path": "linux/linux-bare-metal/imx6ull/gpio-input.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "bsp": {
+    "path": "linux/linux-bare-metal/imx6ull/bsp.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "led-st": {
+    "path": "linux/linux-bare-metal/imx6ull/led-st.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "led-c": {
+    "path": "linux/linux-bare-metal/imx6ull/led-c.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "led-assembly": {
+    "path": "linux/linux-bare-metal/imx6ull/led-assembly.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "bare-idx": {
+    "path": "linux/linux-bare-metal/imx6ull/bare-idx.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "ha-buletooth": {
+    "path": "essay/homeassistant/ha-buletooth.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
+  },
+  "model-onshape": {
+    "path": "essay/3d_model/model-onshape.md",
+    "notion_updated": "2026-06-07T10:41:00.000Z"
   }
 }

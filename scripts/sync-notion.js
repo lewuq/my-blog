@@ -19,7 +19,7 @@ const n2m    = new NotionToMarkdown({ notionClient: notion });
 // 中文分类名 → 英文文件夹名
 const SLUG_MAP = {
   "MCU":          "mcu",
-  "Linux学习笔记": "linux",
+  "Linux": "linux",
   "RTOS":         "rtos",
   "网络知识":      "network",
   "数据库":        "database",
@@ -27,8 +27,9 @@ const SLUG_MAP = {
   "Nordic":       "nordic",
   "STM32":        "stm32",
   "ESP32":        "esp32",
-  "IMX6ULL":      "imx6ull",
-  "Linux裸机学习": "linux-bare-metal",
+  "i.MX6ULL":      "imx6ull",
+  "linux-bare": "linux-bare-metal",
+  "RK3588":  "rk3588",
 };
 
 function toSlug(str) {
@@ -243,6 +244,8 @@ category: "${category}"
 subCategory: "${subCategory}"
 subSubCategory: "${subSubCategory}"
 ---
+
+# ${title}
 
 `;
     fs.writeFileSync(filePath, frontmatter + mdContent, "utf-8");
