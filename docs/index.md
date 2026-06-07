@@ -1,25 +1,29 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
-  name: "zeller's blog"
-  text: "personal blog"
-  tagline: My great project tagline
+  name: "初心高于胜负"
+  text: 成长胜于输赢
+  tagline: MCU · Linux · RTOS · 嵌入式开发
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 开始阅读
+      link: /posts
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: GitHub
+      link: https://github.com/lewuq
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: 🎮
+    title: MCU
+    details: ESP32、STM32、Nordic 等微控制器开发笔记
+    link: /posts/mcu/
+  - icon: 🐧
+    title: Linux
+    details: Linux 内核、驱动、应用层学习记录
+    link: /posts/linux/
+  - icon: 📝
+    title: 随笔
+    details: 开发过程中的踩坑记录与心得体会
+    link: /posts/essay/
 ---
-

@@ -69,6 +69,67 @@ function removeEmptyParents(dir, stopAt) {
   }
 }
 
+// 为新目录自动生成 index.md 和 index.data.js
+function ensureIndex(dirPath, docsDir) {
+  const indexMd = path.join(dirPath, "index.md")
+  const indexData = path.join(dirPath, "index.data.js")
+
+  if (fs.existsSync(indexMd)) return
+
+  const depth = path.relative(docsDir, dirPath).split(path.sep).filter(Boolean).length
+  const importPrefix = "../".repeat(depth + 1)
+  const urlPath = "/posts/" + path.relative(docsDir, dirPath).replace(/\\/g, "/")
+
+  const dataContent = `import { getSubCategories, getDirectPosts } from '${importPrefix}.vitepress/posts.mjs'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const dir = dirname(fileURLToPath(import.meta.url))
+
+export default {
+  load() {
+    return {
+      subCats: getSubCategories(dir, '${urlPath}'),
+      posts: getDirectPosts(dir, '${urlPath}'),
+    }
+  },
+}
+`
+
+  const mdContent = `---
+title: "${path.basename(dirPath)}"
+---
+
+<script setup>
+import { data } from './index.data.js'
+import { withBase } from 'vitepress'
+</script>
+
+<div class="category-grid">
+  <a v-for="c in data.subCats" :key="c.link" :href="withBase(c.link)" class="category-card">
+    <h3>{{ c.text }}</h3>
+  </a>
+</div>
+
+<div v-if="data.posts.length > 0" style="margin-top:32px">
+  <h3>文章</h3>
+  <ul class="post-list">
+    <li v-for="p in data.posts" :key="p.url">
+      <a :href="withBase(p.url)">{{ p.title }}</a>
+    </li>
+  </ul>
+</div>
+
+<div v-if="data.subCats.length === 0 && data.posts.length === 0" style="text-align:center;padding:60px 0;color:var(--vp-c-text-2)">
+  暂无文章
+</div>
+`
+
+  fs.writeFileSync(indexData, dataContent, "utf-8")
+  fs.writeFileSync(indexMd, mdContent, "utf-8")
+  console.log(`📄 自动生成 index → ${path.relative(docsDir, dirPath)}/`)
+}
+
 async function main() {
   console.log("🔄 开始增量同步 Notion 文章...");
 
@@ -144,6 +205,13 @@ async function main() {
     // 确保目录存在
     fs.mkdirSync(dirPath, { recursive: true });
 
+    // 自动生成 index.md（若缺失）
+    ensureIndex(dirPath, DOCS_DIR)
+    // 父目录也确保有 index（如 mcu/ 下新建 esp32/ 时，mcu/ 可能缺 index）
+    if (path.dirname(dirPath) !== DOCS_DIR) {
+      ensureIndex(path.dirname(dirPath), DOCS_DIR)
+    }
+
     // 转换内容
     const mdBlocks = await n2m.pageToMarkdown(page.id);
     let mdContent  = n2m.toMarkdownString(mdBlocks).parent;
@@ -157,7 +225,7 @@ async function main() {
       fs.mkdirSync(imgDir, { recursive: true });
       for (const match of imgMatches) {
         const [fullMatch, alt, url] = match;
-        const ext      = url.includes(".png") ? "png" : url.includes(".gif") ? "gif" : "jpg";
+        const ext      = url.includes(".png") ? "png" : url.includes(".gif") ? "gif" : url.includes(".webp") ? "webp" : "jpg";
         const imgName  = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
         const imgPath  = path.join(imgDir, imgName);
         const saved    = await downloadImage(url, imgPath);

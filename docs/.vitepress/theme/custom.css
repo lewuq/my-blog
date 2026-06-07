@@ -1,0 +1,177 @@
+/* ===== 背景层 ===== */
+
+/* 基础背景色 + 渐变 — 直接放在 html 上 */
+html {
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 25%, rgba(255, 220, 220, 0.15), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 75% 70%, rgba(255, 240, 245, 0.10), transparent 60%),
+    #fefaf7;
+}
+
+html.dark {
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 25%, rgba(90, 45, 55, 0.20), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 75% 70%, rgba(60, 35, 50, 0.15), transparent 60%),
+    #1a1517;
+}
+
+/* body 背景透明，让 html 层透过来 */
+body {
+  background: transparent !important;
+}
+
+/* 模糊背景图片层 — 在 body 背景之上、body 内容之下 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url('/my-blog/IMG_20250914_173749_973.webp') center / cover no-repeat;
+  opacity: 0.12;
+  filter: blur(6px);
+}
+
+html.dark body::before {
+  opacity: 0.08;
+  filter: blur(8px) brightness(0.55);
+}
+
+/* 文章内容区域 — 确保文字可读 */
+.vp-doc {
+  background: rgba(255, 250, 248, 0.80);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+html.dark .vp-doc {
+  background: rgba(22, 18, 20, 0.80);
+}
+
+/* ===== 导航栏 ===== */
+.VPNav {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 250, 248, 0.75) !important;
+}
+
+html.dark .VPNav {
+  background: rgba(22, 18, 20, 0.75) !important;
+}
+
+/* ===== 侧边栏 ===== */
+.VPSidebar {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 250, 248, 0.60) !important;
+}
+
+html.dark .VPSidebar {
+  background: rgba(22, 18, 20, 0.60) !important;
+}
+
+/* ===== 主页 hero ===== */
+.VPHero .name {
+  background: linear-gradient(135deg, #f0c060, #d4a030, #c49020);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.VPHero .text {
+  background: linear-gradient(135deg, #f0c060, #d4a030, #c49020);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== feature 卡片 ===== */
+.VPFeature {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(180, 130, 140, 0.15);
+}
+
+html.dark .VPFeature:hover {
+  box-shadow: 0 8px 24px rgba(200, 130, 150, 0.12);
+}
+
+/* ===== 文章页图片 ===== */
+.vp-doc img {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  cursor: zoom-in;
+  transition: box-shadow 0.2s;
+}
+
+.vp-doc img:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
+}
+
+/* ===== medium-zoom ===== */
+.medium-zoom-overlay {
+  z-index: 999 !important;
+}
+
+.medium-zoom-image--opened {
+  z-index: 1000 !important;
+}
+
+/* ===== 分类卡片 ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.category-card {
+  display: block;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  text-decoration: none !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(180, 130, 140, 0.12);
+}
+
+html.dark .category-card:hover {
+  box-shadow: 0 6px 20px rgba(200, 130, 150, 0.10);
+}
+
+.category-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.category-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+/* ===== 文章列表 ===== */
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}
+
+.post-list a {
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
