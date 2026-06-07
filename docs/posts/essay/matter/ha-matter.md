@@ -5,10 +5,8 @@ subCategory: "Matter"
 subSubCategory: ""
 ---
 
-# ESP32-Matter 随笔
 
-
-# 修改 json 为 cjson
+## 修改 json 为 cjson
 
 
 ESP-IDF v6.01之后，json文件已被修改到组件管理器并改名为cjson，需要进行修改
@@ -38,7 +36,7 @@ idf.py build
 ```
 
 
-# Ubuntu 下走代理
+## Ubuntu 下走代理
 
 
 二选一~，建议用下面的，除非你是Ubuntu主机
@@ -94,7 +92,7 @@ idf.py build
         ```
 
 
-# Ubuntu 换源（改为清华源  / 阿里源）
+## Ubuntu 换源（改为清华源  / 阿里源）
 
 
 有时候因为源很混乱导致下载失败，所以需要更新一个单纯的源确保下载
@@ -181,7 +179,7 @@ sudo apt upgrade
 [bookmark](https://zhuanlan.zhihu.com/p/369516927)
 
 
-# 连接FTP以及开启NFS和SSH
+## 连接FTP以及开启NFS和SSH
 
 - 下载MobaXterm，免费版的就够用了
 
@@ -209,11 +207,11 @@ sudo apt upgrade
 
     - 使用 MobaXterm 的FTP盘进行连接（连接之前使用ifconfig查看虚拟机的IP地址，如果怕下次变更，可以手动更改为静态IP）
 
-        ![image.png](./images/1780829060598-o2150y0torf.png)
+        ![image.png](./images/1780833654044-svgpzwmbs6.png)
 
     - 连接成功之后，使用下方的上传箭头即可传输文件，当然，也可以使用拖拽的方式
 
-        ![MobaXterm_qc1CmMjfqS.png](./images/1780829061746-yxs604ks4o.png)
+        ![MobaXterm_qc1CmMjfqS.png](./images/1780833655241-ez1af2lz74w.png)
 
 - Ubuntu下开启NFS和SSH服务
 
@@ -263,25 +261,25 @@ sudo apt upgrade
         ```
 
 
-        ![image.png](./images/1780829062078-g4xtegrm61t.png)
+        ![image.png](./images/1780833655754-7sxv66ms5d9.png)
 
 
         连接成功之后如下，新建终端也可以进行查看是不是自己的虚拟机，成功之后就可以愉快的进行编程了！
 
 
-        ![image.png](./images/1780829062456-8b3kjgkc0m9.png)
+        ![image.png](./images/1780833656197-sjobau4deyb.png)
 
 
         文档目录结构输出，
 
 
-# 磁盘崩坏修复
+## 磁盘崩坏修复
 
 
 如果遇见下列情况
 
 
-![%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17654431212498.png](./images/1780829062781-f6zgz1qisvg.png)
+![%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17654431212498.png](./images/1780833656566-x1r9x4hmqs.png)
 
 
 解决办法
@@ -302,7 +300,7 @@ sudo apt upgrade
 元凶：磁盘空间不够了
 
 
-![%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17654462436928.png](./images/1780829063082-9698k9by0rt.png)
+![%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17654462436928.png](./images/1780833656891-lhwfksj2ylh.png)
 
 
 需要删除一部分内容之后关闭这个虚拟机
@@ -318,10 +316,10 @@ sudo apt upgrade
 选择完成之后在主界面点击绿色的√，应用修改。
 
 
-![vmware_qQeoFV6cNw.png](./images/1780829063382-h35g90mrwdb.png)
+![vmware_qQeoFV6cNw.png](./images/1780833657254-90hs5uka3wo.png)
 
 
-![vmware_fwWvu5jxT1.png](./images/1780829063738-3pntlr9k80o.png)
+![vmware_fwWvu5jxT1.png](./images/1780833657567-7qw2g73tn8d.png)
 
 
 ### 正确扩容步骤（在当前这个 gparted 里操作）
@@ -342,5 +340,5 @@ sudo apt upgrade
     查看 `/dev/sda3` 是否已经变成 80G。
 
 
-![image.png](./images/1780829064134-e1pjt644yuf.png)
+![image.png](./images/1780833657942-no5akyc3iwm.png)
 

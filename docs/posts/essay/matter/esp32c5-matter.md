@@ -5,13 +5,8 @@ subCategory: "Matter"
 subSubCategory: ""
 ---
 
-# ESP-Matter + ESP32-C5 编译排查记录
-
 
 建议直接跳到最后一个目录查看，因为基本上就是环境问题 ！！！
-
-
-[10 版本问题](https://app.notion.com/p/2c7a54e0fe3c80c89c8dff6e732fdd92#2c7a54e0fe3c80dbbad2f723e60e4d78) 
 
 
 ## 1. 概述
@@ -461,7 +456,7 @@ idf.py build
 [https://github.com/espressif/esp-matter](https://github.com/espressif/esp-matter)
 
 
-![image.png](./images/1780829053786-0rotykqmou5.png)
+![image.png](./images/1780833646997-v89wgjwayzp.png)
 
 
 ```shell

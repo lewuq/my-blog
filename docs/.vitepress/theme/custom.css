@@ -97,6 +97,15 @@ html.dark .VPFeature:hover {
   box-shadow: 0 8px 24px rgba(200, 130, 150, 0.12);
 }
 
+/* ===== 文章页标题 ===== */
+.doc-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
 /* ===== 文章页图片 ===== */
 .vp-doc img {
   border-radius: 8px;

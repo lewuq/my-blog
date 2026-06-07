@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# 类stm32写法（使用结构体的方式）
-
 
 ## 复制启动文件
 
@@ -22,7 +20,7 @@ subSubCategory: "i.MX6ULL"
     ```
 
 
-    ![image.png](./images/1780829088649-2uz77qg97e6.png)
+    ![image.png](./images/1780833719764-vrjbeybl5k.png)
 
 - 从 2_ledc 中移动其启动文件内容到当前文件下（使用这一命令源文件夹的内容会消失）
 
@@ -99,94 +97,90 @@ subSubCategory: "i.MX6ULL"
         }
         ```
 
-<details>
-<summary>main.c</summary>
+- main.c
 
-```shell
-#include "main.h"
-#include "imx6ul.h"
-
-int main(void)
-{
-    clk_enable();
-    led_init();
-
-    while(1){
-        led_off();
-        delay(500);
-
-        led_on();
-        delay(500);
-    }
-    return 0;
-}
-
-/*
- * 点灯步骤
- * 1. 使能GPIO时钟
- * 2. 设置GPIO复用功能
- * 3. 配置GPIO的电气属性
- * 4. 设置GPIO的输出模式
- * 5. 将 GPIO 对应的灯置 高/低 电平
- */
-
-void clk_enable(void){
-
-    CCM->CCGR0 = 0xffffffff;
-    CCM->CCGR1 = 0xffffffff;
-    CCM->CCGR2 = 0xffffffff;
-    CCM->CCGR0 = 0xffffffff;
-    CCM->CCGR0 = 0xffffffff;
-    CCM->CCGR0 = 0xffffffff;
-    CCM->CCGR0 = 0xffffffff;
-    CCM->CCGR0 = 0xffffffff;
-}
-
-void led_init(void){
-
-    IOMUX_SW_MUX->GPIO1_IO03 = 0x5;     /* 设置 GPIO 复用功能 */
-    IOMUX_SW_PAD->GPIO1_IO03 = 0x10B0;  /* 配置 GPIO 的电气属性 */
-    GPIO1->GDIR = 0x0000008;      /* 设置 GPIO 的输出模式 */
-    GPIO1->DR = 0x0;              /* 默认置低电平 */
+    ```shell
+    #include "main.h"
+    #include "imx6ul.h"
     
-}
-
-void led_on(void)
-{
-    /**
-     * 将 GPIO1_DR 的 bit 3 清零（置为 0），其他位保持不变。
-     * 
-     * 步骤：
-     *   1. (1 << 3)      → 生成一个只有 bit 3 为 1 的掩码（二进制: ...00001000）
-     *   2. ~(1 << 3)     → 对掩码取反，得到 bit 3 为 0、其余位为 1 的值（...11110111）
-     *   3. GPIO1_DR &= ... → 按位与操作：bit 3 被强制清零，其他位不变。
-    */
-    GPIO1->DR &= ~(1 << 3);
-}
-
-void led_off(void){
-    /**
-     * 将 GPIO1_DR 的 bit3 置 1
-     * 按位或操作：bit 3 被保留 1 ,其他位保持不变
+    int main(void)
+    {
+        clk_enable();
+        led_init();
+    
+        while(1){
+            led_off();
+            delay(500);
+    
+            led_on();
+            delay(500);
+        }
+        return 0;
+    }
+    
+    /*
+     * 点灯步骤
+     * 1. 使能GPIO时钟
+     * 2. 设置GPIO复用功能
+     * 3. 配置GPIO的电气属性
+     * 4. 设置GPIO的输出模式
+     * 5. 将 GPIO 对应的灯置 高/低 电平
      */
-    GPIO1->DR |=( 1<< 3);
-
-}
-
-void delay_short(volatile unsigned int n){
-    while(n--){
+    
+    void clk_enable(void){
+    
+        CCM->CCGR0 = 0xffffffff;
+        CCM->CCGR1 = 0xffffffff;
+        CCM->CCGR2 = 0xffffffff;
+        CCM->CCGR0 = 0xffffffff;
+        CCM->CCGR0 = 0xffffffff;
+        CCM->CCGR0 = 0xffffffff;
+        CCM->CCGR0 = 0xffffffff;
+        CCM->CCGR0 = 0xffffffff;
     }
-}
-
-void delay(volatile unsigned int n){
-    while(n--){
-        delay_short(0x7ff);
+    
+    void led_init(void){
+    
+        IOMUX_SW_MUX->GPIO1_IO03 = 0x5;     /* 设置 GPIO 复用功能 */
+        IOMUX_SW_PAD->GPIO1_IO03 = 0x10B0;  /* 配置 GPIO 的电气属性 */
+        GPIO1->GDIR = 0x0000008;      /* 设置 GPIO 的输出模式 */
+        GPIO1->DR = 0x0;              /* 默认置低电平 */
+        
     }
-}
-```
-
-
-</details>
+    
+    void led_on(void)
+    {
+        /**
+         * 将 GPIO1_DR 的 bit 3 清零（置为 0），其他位保持不变。
+         * 
+         * 步骤：
+         *   1. (1 << 3)      → 生成一个只有 bit 3 为 1 的掩码（二进制: ...00001000）
+         *   2. ~(1 << 3)     → 对掩码取反，得到 bit 3 为 0、其余位为 1 的值（...11110111）
+         *   3. GPIO1_DR &= ... → 按位与操作：bit 3 被强制清零，其他位不变。
+        */
+        GPIO1->DR &= ~(1 << 3);
+    }
+    
+    void led_off(void){
+        /**
+         * 将 GPIO1_DR 的 bit3 置 1
+         * 按位或操作：bit 3 被保留 1 ,其他位保持不变
+         */
+        GPIO1->DR |=( 1<< 3);
+    
+    }
+    
+    void delay_short(volatile unsigned int n){
+        while(n--){
+        }
+    }
+    
+    void delay(volatile unsigned int n){
+        while(n--){
+            delay_short(0x7ff);
+        }
+    }
+    ```
 
 
 ## 编译下载
@@ -200,11 +194,11 @@ void delay(volatile unsigned int n){
     使用下载工具进行下载
 
 
-    ![image.png](./images/1780829089001-q3eaaglhlad.png)
+    ![image.png](./images/1780833720107-gxun931e9qt.png)
 
 
 ## 效果如下
 
 
-![led_blink.gif](./images/1780829089432-c50bl20qbce.gif)
+![led_blink.gif](./images/1780833720538-q3s4qajuue.gif)
 

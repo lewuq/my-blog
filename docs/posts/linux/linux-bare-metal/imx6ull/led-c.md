@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# C语言点灯
-
 
 使用C语言点灯，主要为编写启动汇编文件和main主函数文件
 
@@ -224,7 +222,7 @@ clean:
 
 - make
 
-    ![image.png](./images/1780829094368-czetywp841m.png)
+    ![image.png](./images/1780833726651-ti7k9wm6cz.png)
 
 
     出现错误
@@ -233,13 +231,13 @@ clean:
     原因：原文中 -Ttext 写成了 -Text
 
 
-    ![chrome_5A3CzyEeSf.png](./images/1780829094821-nowiftsj2kq.png)
+    ![chrome_5A3CzyEeSf.png](./images/1780833727019-bmriys1vm8.png)
 
 
     然后再编译
 
 
-    ![image.png](./images/1780829095113-5loqrzwlnel.png)
+    ![image.png](./images/1780833727377-af98vpre18e.png)
 
 - 下载
     - 从 1_leds 中拷贝 imxdowload 到当前文件夹下
@@ -258,7 +256,7 @@ clean:
 - 烧录
     - 烧录前查看分区是否正确，正确后再执行烧录
 
-        ![image.png](./images/1780829095464-h93r9zek7oc.png)
+        ![image.png](./images/1780833727724-1wweqa53jei.png)
 
     - 烧录
     同样的，要烧录到整个 SD 分区下，也就是 /dev/sdb
@@ -274,7 +272,7 @@ clean:
 红色 LED0 间隔 500ms 闪烁
 
 
-![led_blink.gif](./images/1780829095777-hfgnt6693x8.gif)
+![led_blink.gif](./images/1780833728130-jvoihmk7mw.gif)
 
 
 ## 添加链接文件

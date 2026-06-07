@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# EPIT 定时器
-
 
 定时器是最常用的外设，常常需要使用定时器来完成精准的定时功能，I.MX6U 提供了多种硬件定时器，有些定时器功能非常强大
 
@@ -23,10 +21,10 @@ EPIT 的全称是：Enhanced Periodic Interrupt Timer，直译过来就是增强
 I.MX6U 的 EPIT 定时器只是完成周期性中断定时的，仅此一项功能，至于输入捕获、PWM 输出等这些功能，I.MX6U 由其它的外设来完成
 
 
-![image.png](./images/1780829046838-cwrk2qsnlc.png)
+![image.png](./images/1780833640720-9oq9nk0b79m.png)
 
 
-# 配置
+## 配置
 
 1. 设置 EPIT1 的时钟源
 
@@ -61,7 +59,7 @@ I.MX6U 的 EPIT 定时器只是完成周期性中断定时的，仅此一项功�
     设置 EPIT1_CR 的 EN ( bit 0 ) 位来设置
 
 
-# 实验程序编写
+## 实验程序编写
 
 - 添加对应的文件
 
@@ -138,7 +136,7 @@ void epit1_irqhandler(void);
 ```
 
 
-![image.png](./images/1780829047943-7a4t5zr9s5x.png)
+![image.png](./images/1780833641761-zaknua3np4q.png)
 
 
 </details>
@@ -193,7 +191,7 @@ int main(void)
 </details>
 
 
-# 编译下载验证
+## 编译下载验证
 
 
 修改 Makefile 文件，添加新建目录的路径、修改生成文件的目标名字

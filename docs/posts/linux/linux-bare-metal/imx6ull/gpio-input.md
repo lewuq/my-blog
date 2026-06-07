@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# 按键输入实验
-
 
 这里主要讲解 I.MX6U 的 GPIO 输入控制功能
 
@@ -17,7 +15,7 @@ subSubCategory: "i.MX6ULL"
 原理图
 
 
-![image.png](./images/1780829075879-kwbcgrix5ok.png)
+![image.png](./images/1780833668347-c2r0n8iu0l6.png)
 
 
 ## 新建 key 和 gpio 文件夹

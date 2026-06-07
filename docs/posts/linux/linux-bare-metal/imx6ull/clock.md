@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# 主频和时钟配置
-
 
 时钟解析
 
@@ -169,8 +167,7 @@ TARGET		  	?= clk # 将其 bsp 修改为 clk， 则最后则会生成 clk.bin
 ```
 
 
-## 
-编译下载
+## 编译下载
 
 
 使用 make 编译然后下载到开发板上进行验证

@@ -5,16 +5,14 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# linux裸机驱动学习
+
+![image.png](./images/1780833753159-36c4e9ukch7.png)
 
 
-![image.png](./images/1780829126005-biiu9ap90d7.png)
+## 连接FTP以及开启NFS和SSH
 
 
-# 连接FTP以及开启NFS和SSH
-
-
-![image.png](./images/1780829127567-5dp557qzlvo.png)
+![image.png](./images/1780833754487-4gntdqij0p.png)
 
 - 下载MobaXterm，免费版的就够用了
 
@@ -42,11 +40,11 @@ subSubCategory: "i.MX6ULL"
 
     - 使用 MobaXterm 的FTP盘进行连接（连接之前使用ifconfig查看虚拟机的IP地址，如果怕下次更变，更改为静态IP）
 
-        ![image.png](./images/1780829128000-86osey85tdm.png)
+        ![image.png](./images/1780833754871-4xgo8hnf8yy.png)
 
     - 连接成功之后，使用下方的上传箭头即可传输文件，当然，也可以使用拖拽的方式
 
-        ![MobaXterm_qc1CmMjfqS.png](./images/1780829128547-m9skb0ezusj.png)
+        ![MobaXterm_qc1CmMjfqS.png](./images/1780833755388-y4ezrsvb1bi.png)
 
 - Ubuntu下开启NFS和SSH服务
 
@@ -96,13 +94,13 @@ subSubCategory: "i.MX6ULL"
         ```
 
 
-        ![image.png](./images/1780829129132-5e64w4cj1rp.png)
+        ![image.png](./images/1780833755881-iv0glmi78pm.png)
 
 
         连接成功之后如下，新建终端也可以进行查看是不是自己的虚拟机，成功之后就可以愉快的进行编程了！
 
 
-        ![image.png](./images/1780829129601-5cufieiw3ye.png)
+        ![image.png](./images/1780833756330-cvhmbyusx7v.png)
 
 
         文档目录结构输出，
@@ -140,7 +138,7 @@ subSubCategory: "i.MX6ULL"
         ```
 
 
-# 安装 ARM - GCC 交叉编译器
+## 安装 ARM - GCC 交叉编译器
 
 - 首先创建两个目录
 
@@ -158,15 +156,15 @@ subSubCategory: "i.MX6ULL"
 
     - 下载64位的版本
 
-        ![image.png](./images/1780829130012-cd8ywgu29e8.png)
+        ![image.png](./images/1780833756741-nab2vedj23.png)
 
     - 然后使用 MobaXterm 上传到 虚拟机的 linux 文件夹下的 tool 文件夹内（没有需要自行创建）
 
-        ![image.png](./images/1780829130500-7qnbd1xpoal.png)
+        ![image.png](./images/1780833757188-ywneaa7359s.png)
 
     - 使用远程工具查看是否创建成功
 
-        ![Code_S9oXTOweSQ.png](./images/1780829130940-9togeu4rrtr.png)
+        ![Code_S9oXTOweSQ.png](./images/1780833757585-0l1bmbgv9mrr.png)
 
     - 将其复制到  usr/local/arm 文件夹下 （在 VS Code 下的好处就是可以直接复制命令）然后配置
 
@@ -203,7 +201,7 @@ subSubCategory: "i.MX6ULL"
         安装成功
 
 
-        ![Code_VytXlofD1Y.png](./images/1780829131395-90977ofm1vf.png)
+        ![Code_VytXlofD1Y.png](./images/1780833758016-ocdhhggttkf.png)
 
     - 创建 driver/board_driver 并通过 MobaXterm 将正点原子的裸机例程放入其中
 
@@ -217,7 +215,7 @@ subSubCategory: "i.MX6ULL"
 
 - 学习裸机编程不需要太过深入，而是要通过这一部分进行学习如何查看寄存器值以排查问题
 
-    ![image.png](./images/1780829131833-pfpt2furf6q.png)
+    ![image.png](./images/1780833758458-mfawp7ec5b.png)
 
 
     ```flow
@@ -229,7 +227,7 @@ subSubCategory: "i.MX6ULL"
     ```
 
 
-# Ubuntu 换源（改为清华源  / 阿里源）
+## Ubuntu 换源（改为清华源  / 阿里源）
 
 
 有时候因为源很混乱导致下载失败，所以需要更新一个单纯的源确保下载
@@ -307,7 +305,7 @@ sudo apt upgrade
 [bookmark](https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11krjRjJ)
 
 
-### 什么是curl
+## 什么是curl
 
 
 [bookmark](https://apifox.com/blog/understanding-curl/)

@@ -5,8 +5,6 @@ subCategory: "linux-bare"
 subSubCategory: "i.MX6ULL"
 ---
 
-# BSP 工程管理
-
 
 当进行驱动操作时，单一文件夹全部放置 .c 和 .h 以及其他文件会显得特别混乱而且不好管理，也不利于深度开发，所以将其存放于不同文件夹下，再以其属性进行区分，方便进行管理和开发，已经定位错误。
 
@@ -199,7 +197,7 @@ void delay(volatile unsigned int n){
     ```
 
 
-    ![image.png](./images/1780829082098-0sm4tem1oukk.png)
+    ![image.png](./images/1780833706135-f4a1f094hrn.png)
 
 <details>
 <summary>创建 imx6ul.h</summary>
@@ -237,7 +235,7 @@ void delay(volatile unsigned int n){
     ```
 
 
-    ![image.png](./images/1780829082469-gspyin76oec.png)
+    ![image.png](./images/1780833707277-p41lz4qkng.png)
 
 <details>
 <summary>修改 main.c</summary>
@@ -342,14 +340,14 @@ ls /dev/sd*
 ```
 
 
-![image.png](./images/1780829082786-vjj9k3tjpv.png)
+![image.png](./images/1780833707722-yb2kdegifee.png)
 
 
-![image.png](./images/1780829083248-gr415sp5pt.png)
+![image.png](./images/1780833708259-2bqpgzkl34l.png)
 
 
 效果如下
 
 
-![led_blink.gif](./images/1780829083604-2f7idou5p3k.gif)
+![led_blink.gif](./images/1780833708676-sj19vnmcp9e.gif)
 

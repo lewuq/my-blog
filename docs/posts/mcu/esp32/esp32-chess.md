@@ -5,8 +5,6 @@ subCategory: "ESP32"
 subSubCategory: ""
 ---
 
-# ESP32-S3-R8N8开发, 24电赛三子棋装置
-
 
 开发工具：vscode+platform io
 

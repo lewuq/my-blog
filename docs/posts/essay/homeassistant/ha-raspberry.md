@@ -5,8 +5,6 @@ subCategory: "HomeAssistant"
 subSubCategory: ""
 ---
 
-# 部署在树莓派的HA OS 配置无线网卡
-
 
 前提：你没有网线接口和路由
 

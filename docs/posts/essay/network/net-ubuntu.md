@@ -5,13 +5,11 @@ subCategory: "NetWork"
 subSubCategory: ""
 ---
 
-# 突破校园网限制：Windows+Ubuntu虚拟机+Linux开发板的高效联调网络拓扑
-
 
 在进行嵌入式 Linux 系统开发（如 [i.MX](http://i.mx/)6ULL 车载中控终端或 Allwinner T113 智能桌面屏幕项目）时，我们通常需要同时使用 Windows 主机（运行 MobaXterm 的 TFTP 服务）、Ubuntu 虚拟机（提供 NFS 根文件系统和 SSH 编译环境）以及物理开发板。
 
 
-然而，在校园网环境下，由于 **AP 隔离**以及**严格的设备数量限制**（通常仅限一台 PC 和一台移动设备），常规的路由器直连或虚拟机桥接方案往往难以奏效。本文记录了一种基于 Windows 底层网桥与网络共享（ICS）的终极解决方案。
+然而，在校园网环境下，由于 **AP 隔离**以及**严格的设备数量限制**（通常仅限一台 PC 和一台移动设备），常规的路由器直连或虚拟机桥接方案往往难以奏效。本文记录了一种基于 Windows 底层网桥与网络共享（ICS）的方案。
 
 
 ## 核心拓扑思路
@@ -34,7 +32,7 @@ subSubCategory: ""
 2. 打开 VMware 虚拟机设置，将“网络适配器”的网络连接更改为 **“自定义 (特定虚拟网络)”**。
 3. 在下拉菜单中选择 **`VMnet1 (仅主机模式)`**，保存退出。
 
-    ![vmware_GUsLk53Ijt.png](./images/1780829036304-59ebax4z0gw.png)
+    ![vmware_GUsLk53Ijt.png](./images/1780833597904-4lxr2xqt3a7.png)
 
 
 ### 2. 建立 Windows 物理网桥
@@ -43,7 +41,7 @@ subSubCategory: ""
 2. 按住 `Ctrl` 键，同时选中连接开发板的 **USB 网卡（以太网 3）** 和虚拟机的虚拟网卡 **VMware Network Adapter VMnet1**。
 3. 右键点击其中任意一个，选择 **“桥接 (Bridge Connections)”**，等待系统生成名为 **“网桥”** 的新图标。
 
-![explorer_bB0hEO8XKm.png](./images/1780829036646-3zclq16a0me.png)
+![explorer_bB0hEO8XKm.png](./images/1780833598309-5xdeeanol3e.png)
 
 
 ### 3. 配置 Internet 连接共享 (ICS)
@@ -54,7 +52,7 @@ subSubCategory: ""
 4. 在家庭网络连接的下拉菜单中，务必选择刚刚生成的 **“网桥”**，点击确定。
 _(此时，Windows 会强制将网桥的 IP 设置为_ _`192.168.137.1`__)_
 
-![dllhost_tpDC6nZX5X.png](./images/1780829036995-3l7z41n0s9i.png)
+![dllhost_tpDC6nZX5X.png](./images/1780833598690-petu6h9wlwq.png)
 
 
 ### 4. 解决 USB 网卡底层丢包问题 (关键避坑)
@@ -70,7 +68,7 @@ _(此时，Windows 会强制将网桥的 IP 设置为_ _`192.168.137.1`__)_
 
 4. 重新插拔开发板网线，触发硬件重新握手。
 
-![powershell_fyRjfbxBn1.png](./images/1780829037320-d5drfb814av.png)
+![powershell_fyRjfbxBn1.png](./images/1780833599078-9q12mbpfjgt.png)
 
 
 ### 5. 联调服务映射清单
@@ -82,9 +80,9 @@ _(此时，Windows 会强制将网桥的 IP 设置为_ _`192.168.137.1`__)_
 - **SSH 远程开发**：在 Ubuntu 中通过 `ifconfig` 查看分配到的 IP（如 `192.168.137.248`），Windows 使用 VSCode 即可直接 SSH 连接。
 - **NFS 挂载根文件系统**：开发板启动 Linux 内核后，设置 `bootargs` 中的 `nfsroot` 参数，指向虚拟机的 IP 及共享路径（例如 `nfsroot=192.168.137.248:/home/user/nfs`），即可成功挂载。
 
-# Tips
+## Tips
 
 1. 缺点就是开发板子在通过 tftp 拉取 zImage 镜像文件的时候，速度会比较慢，大概需要花费 1-2 分钟，速度比较慢，只有 100k 左右的网速
 
-![MobaXterm_6Xg9pyp0uN.png](./images/1780829037662-l2j8j9jlz8.png)
+![MobaXterm_6Xg9pyp0uN.png](./images/1780833599476-jmhx042e6hr.png)
 

@@ -5,8 +5,6 @@ subCategory: "HomeAssistant"
 subSubCategory: ""
 ---
 
-# 蓝牙代理随笔
-
 
 # 蓝牙代理的作用
 
@@ -24,7 +22,7 @@ subSubCategory: ""
     - Home Assistant 把这些设备识别为“蓝牙实体”；
     - 你就可以在 HA 的界面上看到它们的温度、电量、信号强度等信息。
 
-![image.png](./images/1780829140050-xur0hh2ulhf.png)
+![image.png](./images/1780833765627-r1jiudcbe6g.png)
 
 
 上图展示了通过 **Home Assistant 蓝牙代理（Bluetooth Proxy）** 扫描到的 BLE 广播信息。表格中的字段含义如下：
@@ -78,7 +76,7 @@ To identify a device reliably, use its **advertised name** or other characterist
 ---
 
 
-# 使用蓝牙代理的实际应用
+## 使用蓝牙代理的实际应用
 
 - 询问AI
 

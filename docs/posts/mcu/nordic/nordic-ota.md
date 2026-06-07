@@ -5,8 +5,6 @@ subCategory: "Nordic"
 subSubCategory: ""
 ---
 
-# 蓝牙OTA升级随笔
-
 
 # 蓝牙OTA的资料
 

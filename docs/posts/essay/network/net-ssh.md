@@ -5,8 +5,6 @@ subCategory: "NetWork"
 subSubCategory: ""
 ---
 
-# SSH 与 VSFTPD 拒绝服务
-
 
 ## 1. 故障背景与现象
 

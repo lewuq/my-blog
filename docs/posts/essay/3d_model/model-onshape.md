@@ -5,7 +5,6 @@ subCategory: "3D_Model"
 subSubCategory: ""
 ---
 
-# onshape使用随笔
 
 - 如果想创建一个固定孔位对称的物体，可以选择镜像
 

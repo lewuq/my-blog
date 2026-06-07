@@ -19,7 +19,7 @@ const n2m    = new NotionToMarkdown({ notionClient: notion });
 // 中文分类名 → 英文文件夹名
 const SLUG_MAP = {
   "MCU":          "mcu",
-  "Linux": "linux",
+  "Linux":        "linux",
   "RTOS":         "rtos",
   "网络知识":      "network",
   "数据库":        "database",
@@ -29,6 +29,9 @@ const SLUG_MAP = {
   "ESP32":        "esp32",
   "i.MX6ULL":      "imx6ull",
   "linux-bare": "linux-bare-metal",
+  "rootfs":     "rootfs",
+  "uboot":      "uboot",
+  "Kernel":     "kernel",
   "RK3588":  "rk3588",
 };
 
