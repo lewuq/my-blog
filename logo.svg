@@ -1,12 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff6b9d"/>
-      <stop offset="50%" style="stop-color:#c44dff"/>
-      <stop offset="100%" style="stop-color:#6ec6ff"/>
-    </linearGradient>
-  </defs>
-  <circle cx="80" cy="80" r="76" fill="url(#g)" opacity="0.15"/>
-  <text x="80" y="92" text-anchor="middle" font-size="52" font-family="sans-serif" font-weight="700" fill="url(#g)">Z</text>
-  <circle cx="80" cy="80" r="74" fill="none" stroke="url(#g)" stroke-width="2" opacity="0.4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <rect x="1" y="1" width="38" height="38" rx="11" fill="#e3ebdd" stroke="#b8c8b3"/>
+  <path d="M12 12h16L13 28h15" fill="none" stroke="#486b50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25 8c5 0 7 2 6 5-4 0-6-1-6-5Z" fill="#829b75"/>
 </svg>
