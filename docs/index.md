@@ -1,29 +1,11 @@
 ---
 layout: home
-
-hero:
-  name: "初心高于胜负"
-  text: 成长胜于输赢
-  tagline: MCU · Linux · RTOS · 嵌入式开发
-  actions:
-    - theme: brand
-      text: 开始阅读
-      link: /posts
-    - theme: alt
-      text: GitHub
-      link: https://github.com/lewuq
-
-features:
-  - icon: 🎮
-    title: MCU
-    details: ESP32、STM32、Nordic 等微控制器开发笔记
-    link: /posts/mcu/
-  - icon: 🐧
-    title: Linux
-    details: Linux 内核、驱动、应用层学习记录
-    link: /posts/linux/
-  - icon: 📝
-    title: 随笔
-    details: 开发过程中的踩坑记录与心得体会
-    link: /posts/essay/
+title: 首页
+description: Zeller 的数字花园，记录嵌入式开发、Linux 学习与日常实践。
 ---
+
+<script setup>
+import { data } from './index.data.js'
+</script>
+
+<BlogHome :posts="data.posts" :categories="data.categories" />

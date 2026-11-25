@@ -3,6 +3,42 @@ import { join, basename } from 'path'
 
 const SKIP_DIRS = new Set(['images', 'assets', 'public', '.vitepress', 'node_modules'])
 
+const CATEGORY_LABELS = {
+  mcu: 'MCU', linux: 'Linux', essay: '随笔', rtos: 'RTOS',
+  esp32: 'ESP32', nordic: 'Nordic', stm32: 'STM32',
+  imx6ull: 'i.MX6ULL', rk3588: 'RK3588',
+  'linux-bare-metal': '裸机开发', kernel: 'Linux 内核',
+  rootfs: '根文件系统', uboot: 'U-Boot', network: '网络',
+  homeassistant: 'Home Assistant', matter: 'Matter', '3d_model': '3D 建模',
+}
+
+function label(name) { return CATEGORY_LABELS[name] || name }
+
+function getPostInfo(filePath, url) {
+  const content = readFileSync(filePath, 'utf-8')
+  const body = content.replace(/^---\r?\n[\s\S]*?\r?\n---\s*/, '')
+  const plain = body.replace(/```[\s\S]*?```/g, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]*>/g, '')
+    .replace(/https?:\/\/\S+/g, '')
+  const paragraph = plain.split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line && !/^(?:#{1,6}\s|\||[-*>]|\d+\.)/.test(line))
+    .map(line => line.replace(/[`*_~]/g, '').trim())
+    .find(line => line.length >= 18)
+  const parts = url.replace(/^\/posts\//, '').split('/')
+  const chinese = (plain.match(/[\u3400-\u9fff]/g) || []).length
+  const words = (plain.match(/[a-zA-Z0-9]+/g) || []).length
+  return {
+    title: extractTitle(filePath), url,
+    category: parts[0], categoryLabel: label(parts[0]),
+    topic: parts.length > 2 ? label(parts.at(-2)) : label(parts[0]),
+    summary: paragraph ? paragraph.slice(0, 90) + (paragraph.length > 90 ? '…' : '') : `关于${parts.slice(0, -1).map(label).join(' · ')}的学习记录与实践笔记。`,
+    readingMinutes: Math.max(1, Math.ceil(chinese / 350 + words / 220)),
+  }
+}
+
 // 分类排序：排前面的显示在前，未列出的按字母排
 const CATEGORY_ORDER = [
   'mcu',
@@ -108,7 +144,8 @@ export function generateSidebar(dir, baseUrl, opts = {}) {
       const children = walk(join(d, entry.name), `${urlPrefix}/${entry.name}`, depth + 1)
       if (children.length > 0) {
         result.push({
-          text: entry.name,
+          text: label(entry.name),
+          link: `${urlPrefix}/${entry.name}/`,
           collapsed,
           items: children,
         })
@@ -144,10 +181,7 @@ export function getPosts(dir, baseUrl = '/posts') {
         if (SKIP_DIRS.has(entry.name) || entry.name.startsWith('.')) continue
         walk(join(d, entry.name), `${urlPrefix}/${entry.name}`)
       } else if (entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md') {
-        results.push({
-          title: extractTitle(join(d, entry.name)),
-          url: `${urlPrefix}/${basename(entry.name, '.md')}`,
-        })
+        results.push(getPostInfo(join(d, entry.name), `${urlPrefix}/${basename(entry.name, '.md')}`))
       }
     }
   }
@@ -164,7 +198,7 @@ export function getCategoryNav(postsDir) {
 
   const dirs = sortByOrder(entries.filter(e => e.isDirectory() && !SKIP_DIRS.has(e.name) && !e.name.startsWith('.') && hasPosts(join(postsDir, e.name))))
   for (const entry of dirs) {
-    items.push({ text: entry.name, link: `/posts/${entry.name}/` })
+    items.push({ text: label(entry.name), link: `/posts/${entry.name}/` })
   }
   return items
 }
@@ -177,7 +211,7 @@ export function getSubCategories(catDir, baseUrl) {
 
   const dirs = sortByOrder(entries.filter(e => e.isDirectory() && !SKIP_DIRS.has(e.name) && !e.name.startsWith('.') && hasPosts(join(catDir, e.name))))
   for (const entry of dirs) {
-    items.push({ text: entry.name, link: `${baseUrl}/${entry.name}/` })
+    items.push({ text: label(entry.name), link: `${baseUrl}/${entry.name}/` })
   }
   return items
 }

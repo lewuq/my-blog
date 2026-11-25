@@ -18,24 +18,37 @@ export default defineConfig({
   base: '/my-blog/',
   title: "Zeller's Blog",
   description: '个人技术博客',
+  lang: 'zh-CN',
+  lastUpdated: false,
+  markdown: {
+    theme: { light: 'github-light', dark: 'github-dark' },
+  },
 
   head: [
-    ['link', { rel: 'icon', href: '/my-blog/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/my-blog/logo.svg' }],
   ],
 
   themeConfig: {
+    logo: '/logo.svg',
+    outline: { level: [2, 3], label: '本页目录' },
+    sidebarMenuLabel: '文章目录',
+    darkModeSwitchLabel: '日夜配色',
+    lightModeSwitchTitle: '切换到柔和白天',
+    darkModeSwitchTitle: '切换到鼠尾草绿夜晚',
+    returnToTopLabel: '回到顶部',
+    docFooter: { prev: '上一篇', next: '下一篇' },
     nav: [
       { text: '首页', link: '/' },
+      { text: '全部文章', link: '/posts', activeMatch: '^/posts$' },
       {
-        text: 'Learn',
+        text: '学习笔记',
         items: getCategoryNav(postsDir),
       },
       {
-        text: 'Contact',
+        text: '联系我',
         items: [
-          { text: '📧 Email', link: 'mailto:le_wuq@163.com' },
-          { text: '📺 B站', link: 'https://space.bilibili.com/your-id' },
-          { text: '✈️ TG', link: 'https://t.me/your-telegram' },
+          { text: '邮件', link: 'mailto:le_wuq@163.com' },
+          { text: 'GitHub', link: 'https://github.com/lewuq' },
         ],
       },
     ],
@@ -55,6 +68,20 @@ export default defineConfig({
 
     search: {
       provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: { buttonText: '搜索笔记', buttonAriaLabel: '搜索笔记' },
+              modal: {
+                displayDetails: '显示详情', resetButtonTitle: '清除搜索',
+                backButtonTitle: '返回', noResultsText: '没有找到相关笔记',
+                footer: { selectText: '选择', selectKeyAriaLabel: '回车', navigateText: '切换', navigateUpKeyAriaLabel: '向上', navigateDownKeyAriaLabel: '向下', closeText: '关闭', closeKeyAriaLabel: '退出' },
+              },
+            },
+          },
+        },
+      },
     },
   },
 })
